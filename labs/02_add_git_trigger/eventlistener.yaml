@@ -4,8 +4,8 @@ metadata:
   name: cd-listener
 spec:
   serviceAccountName: pipeline
-  triggers: 
+  triggers:
     - bindings:
-        - ref: cd-binding
+      - ref: cd-binding
       template:
         ref: cd-template
