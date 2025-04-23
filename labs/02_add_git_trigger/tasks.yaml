@@ -7,6 +7,7 @@ spec:
     - name: message
       description: The message to echo
       type: string
+
   steps:
     - name: echo-message
       image: alpine:3
@@ -26,8 +27,10 @@ spec:
     - name: branch
       description: The branch to clone
       type: string
+
   steps:
     - name: checkout
       image: bitnami/git:latest
       command: [git]
-      args: ["clone", "--branch", "$(params.branch)", "$(params.repo-url)"]
+      args: ["clone", "$(params.repo-url)", "--branch", "$(params.branch)"]
+

@@ -8,6 +8,13 @@ spec:
     - name: branch
       default: "master"
   tasks:
+    - name: start
+      taskRef:
+        name: echo
+      params:
+      - name: message
+        value: "Triggering pipeline for $(params.branch) branch of $(params.repo-url) ..."
+        
     - name: clone
       taskRef:
         name: checkout
@@ -16,7 +23,8 @@ spec:
         value: "$(params.repo-url)"
       - name: branch
         value: "$(params.branch)"
-
+      runAfter:
+        - start
     - name: lint
       taskRef:
         name: echo
